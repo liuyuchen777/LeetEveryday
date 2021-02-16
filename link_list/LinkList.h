@@ -86,13 +86,15 @@ public:
 
     void print_LinkList(ListNode *ptr)
     {
-        do
+        if (ptr != nullptr)
         {
-            cout << ptr->val << " -> ";
-            ptr = ptr->next;
-        } while (ptr != nullptr);
-
-        cout << endl;   
+            do
+            {
+                cout << ptr->val << " -> ";
+                ptr = ptr->next;
+            } while (ptr != nullptr);
+        cout << endl;
+        }
     }
 
     ListNode* removeNthFromEnd(ListNode* head, int n) 
@@ -321,7 +323,32 @@ public:
 
     ListNode* deleteDuplicates2(ListNode* head) 
     {
+        if (head == nullptr || head->next == nullptr)
+            return head;
         
+        ListNode *result = new ListNode(-1, head);
+        ListNode *pre = result;
+        ListNode *curr = result->next;
+
+        while (curr != nullptr && curr->next != nullptr)
+        {
+            if (curr->val == curr->next->val)
+            {
+                while (curr->next != nullptr && curr->val == curr->next->val)
+                {
+                    curr = curr->next;
+                }
+                pre->next = curr->next;
+                curr = curr->next;            
+            }
+            else
+            {
+                pre = curr;
+                curr = curr->next;
+            }
+        } 
+
+        return result->next;
     }
 };
 

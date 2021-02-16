@@ -8,9 +8,9 @@ find_package(Threads REQUIRED)
 
 include_directories(${GTEST_INCLUDE_DIRS})
 
-add_executable(xxx xxx.h test.cpp)
+add_executable(Sort sort.h test.cpp)
 
-target_link_libraries(xxx ${GTEST_BOTH_LIBRARIES})
-target_link_libraries(xxx ${CMAKE_THREAD_LIBS_INIT})
-add_test(Test xxx)
+target_link_libraries(Sort ${GTEST_BOTH_LIBRARIES})
+target_link_libraries(Sort ${CMAKE_THREAD_LIBS_INIT})
+add_test(Test sort)
 enable_testing()

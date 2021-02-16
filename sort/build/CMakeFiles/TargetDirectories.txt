@@ -1,0 +1,4 @@
+/mnt/d/Local_Lab/LeetEveryday/sort/build/CMakeFiles/rebuild_cache.dir
+/mnt/d/Local_Lab/LeetEveryday/sort/build/CMakeFiles/edit_cache.dir
+/mnt/d/Local_Lab/LeetEveryday/sort/build/CMakeFiles/test.dir
+/mnt/d/Local_Lab/LeetEveryday/sort/build/CMakeFiles/Sort.dir

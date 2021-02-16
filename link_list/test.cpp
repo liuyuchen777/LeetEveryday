@@ -340,6 +340,66 @@ TEST(deleteSortList, common1)
     EXPECT_EQ(judge_same_linklist(solve.deleteDuplicates(list), result), true);
 }
 
+TEST(deleteSortList2, common1)
+{
+    Solution solve;
+    vector<int> vec = {1, 2, 2, 2, 3};
+    vector<int> res = {1, 3};
+    ListNode *list = solve.init_linklist_vec(vec);
+    ListNode *result = solve.init_linklist_vec(res);
+
+    // solve.print_LinkList(solve.deleteDuplicates2(list));
+    EXPECT_EQ(judge_same_linklist(solve.deleteDuplicates2(list), result), true);
+}
+
+TEST(deleteSortList2, common2)
+{
+    Solution solve;
+    vector<int> vec = {2, 2, 2, 3, 4};
+    vector<int> res = {3, 4};
+    ListNode *list = solve.init_linklist_vec(vec);
+    ListNode *result = solve.init_linklist_vec(res);
+
+    // solve.print_LinkList(solve.deleteDuplicates2(list));
+    EXPECT_EQ(judge_same_linklist(solve.deleteDuplicates2(list), result), true);
+}
+
+TEST(deleteSortList2, limit1)
+{
+    Solution solve;
+    vector<int> vec = {};
+    vector<int> res = {};
+    ListNode *list = solve.init_linklist_vec(vec);
+    ListNode *result = solve.init_linklist_vec(res);
+
+    // solve.print_LinkList(solve.deleteDuplicates2(list));
+    EXPECT_EQ(judge_same_linklist(solve.deleteDuplicates2(list), result), true);
+}
+
+TEST(deleteSortList2, limit2)
+{
+    Solution solve;
+    vector<int> vec = {1};
+    vector<int> res = {1};
+    ListNode *list = solve.init_linklist_vec(vec);
+    ListNode *result = solve.init_linklist_vec(res);
+
+    // solve.print_LinkList(solve.deleteDuplicates2(list));
+    EXPECT_EQ(judge_same_linklist(solve.deleteDuplicates2(list), result), true);
+}
+
+TEST(deleteSortList2, limit3)
+{
+    Solution solve;
+    vector<int> vec = {1, 1};
+    vector<int> res = {};
+    ListNode *list = solve.init_linklist_vec(vec);
+    ListNode *result = solve.init_linklist_vec(res);
+
+    // solve.print_LinkList(solve.deleteDuplicates2(list));
+    EXPECT_EQ(judge_same_linklist(solve.deleteDuplicates2(list), result), true);
+}
+
 int main(int argc, char *argv[])
 {
     ::testing::InitGoogleTest(&argc, argv);
