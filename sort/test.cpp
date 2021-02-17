@@ -53,14 +53,26 @@ TEST(selection, common1)
     EXPECT_EQ(solve.judgeSort(vec), true);
 }
 
+TEST(insert, common1)
+{
+    Solution solve;
+    vector<int> vec = solve.gen_rand_array(1);
+    
+    insertSort(vec);
+    // solve.print_vec(vec);
+
+    EXPECT_EQ(solve.judgeSort(vec), true);
+}
+
 TEST(time, common1)
 {
     double time = cal_time(bubbleSort);
     cout << "bubble sort:\t" << time << endl;
+    time = cal_time(insertSort);
+    cout << "insert sort:\t" << time << endl;
     time = cal_time(selectionSort);
     cout << "selection sort:\t" << time << endl;
 }
-
 
 int main(int argc, char *argv[])
 {

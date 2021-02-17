@@ -6,5 +6,5 @@ CXX_FLAGS =  -g -std=c++11
 
 CXX_DEFINES = 
 
-CXX_INCLUDES = -I/usr/local/include 
+CXX_INCLUDES = 
 

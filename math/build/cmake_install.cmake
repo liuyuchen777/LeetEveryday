@@ -1,4 +1,4 @@
-# Install script for directory: /mnt/d/Local_Lab/LeetEveryday/math
+# Install script for directory: /mnt/d/Users/Local_Lab/LeetEveryday/math
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -45,5 +45,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "/mnt/d/Local_Lab/LeetEveryday/math/build/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "/mnt/d/Users/Local_Lab/LeetEveryday/math/build/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")

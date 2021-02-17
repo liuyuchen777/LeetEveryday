@@ -29,6 +29,17 @@ TEST(palinrome, common1)
     EXPECT_EQ(solve.isPalindrome(7), true);
 }
 
+TEST(romaN1, common1)
+{
+    Solution solve;
+
+    EXPECT_EQ(solve.romanToInt("III"), 3);
+    EXPECT_EQ(solve.romanToInt("IV"), 4);
+    EXPECT_EQ(solve.romanToInt("IX"), 9);
+    EXPECT_EQ(solve.romanToInt("LVIII"), 58);
+    EXPECT_EQ(solve.romanToInt("MCMXCIV"), 1994);
+}
+
 TEST(atoi, common1)
 {
     Solution solve;

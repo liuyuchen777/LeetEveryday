@@ -127,7 +127,32 @@ void selectionSort(vector<int> &vec)
 
 void insertSort(vector<int> &vec)
 {
+    for (int i = 1; i < vec.size(); i++)
+    {
+        int curr = vec[i];
+        int pos = i;
+        while (vec[pos - 1] > curr && pos > 0)
+        {
+            vec[pos] = vec[pos - 1];
+            pos--;
+        }
+        vec[pos] = curr;
+    }
+}
+
+void quickSort(vector<int> &vec)
+{
     
+}
+
+void _quickSort(vector<int> &vec, int l, int r)
+{
+
+}
+
+void partition(vector<int> &vec, int l, int r)
+{
+
 }
 
 double cal_time(void (*sort)(vector<int> &))
@@ -144,4 +169,5 @@ double cal_time(void (*sort)(vector<int> &))
     else
         return -1.0;
 }
+
 
