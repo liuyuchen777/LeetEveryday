@@ -62,6 +62,42 @@ TEST(atoi, common1)
     EXPECT_EQ(solve.myAtoi(str8), INT32_MAX);
 }
 
+TEST(roman2, common1)
+{
+    Solution solve;
+
+    EXPECT_EQ(solve.intToRoman(3), "III");
+    EXPECT_EQ(solve.intToRoman(4), "IV");
+    EXPECT_EQ(solve.intToRoman(9), "IX");
+    EXPECT_EQ(solve.intToRoman(58), "LVIII");
+    EXPECT_EQ(solve.intToRoman(1994), "MCMXCIV");
+}
+
+TEST(divide, common1)
+{
+    Solution solve;
+
+    EXPECT_EQ(solve.divide(10, 3), 3);
+    EXPECT_EQ(solve.divide(7, -3), -2);
+    EXPECT_EQ(solve.divide(0, 1), 0);
+    EXPECT_EQ(solve.divide(1, 1), 1);
+    EXPECT_EQ(solve.divide(20, 3), 6);
+    EXPECT_EQ(solve.divide(-2147483648, 1), -2147483648);
+    // EXPECT_EQ(solve.divide(2147483649, 1), 2147483649);
+}
+
+TEST(multiplyStr, common1)
+{
+    Solution solve;
+
+    //EXPECT_EQ(solve.multiply("123", "123"), "15129");
+    //EXPECT_EQ(solve.multiply("1", "1"), "1");
+    //EXPECT_EQ(solve.multiply("123", "456"), "56088");
+    //EXPECT_EQ(solve.multiply("9", "9"), "81");
+    EXPECT_EQ(solve.multiply("9", "99"), "891");
+    EXPECT_EQ(solve.multiply("0", "99999"), "0");
+}
+
 int main(int argc, char *argv[])
 {
     ::testing::InitGoogleTest(&argc, argv);
