@@ -8,7 +8,8 @@
 #include <vector>
 #include <cstdint>
 
-template<class Iter> void insert_sort(Iter begin, Iter end) {
+template<class Iter> 
+void insert_sort(Iter begin, Iter end) {
     for (Iter cur = begin; cur != end; ++cur) {
         Iter p = cur;
         while (begin <= --p && *cur < *p);
@@ -23,7 +24,8 @@ template<class Iter> void insert_sort(Iter begin, Iter end) {
     }
 }
 
-template<class Iter> void insert_sort_no_copy(Iter begin, Iter end) {
+template<class Iter> 
+void insert_sort_no_copy(Iter begin, Iter end) {
     for (Iter cur = begin; cur != end; ++cur) {
         Iter p = cur;
         while (begin <= --p && *cur < *p); 
@@ -34,7 +36,8 @@ template<class Iter> void insert_sort_no_copy(Iter begin, Iter end) {
     }
 }
 
-template<class Iter> void binary_insert_sort(Iter begin, Iter end) {
+template<class Iter> 
+void binary_insert_sort(Iter begin, Iter end) {
     for (Iter cur = begin; cur != end; ++cur) {
         Iter p = std::upper_bound(begin, cur, *cur);
         if (p != cur) {
@@ -47,19 +50,21 @@ template<class Iter> void binary_insert_sort(Iter begin, Iter end) {
     }
 }
 
-template<class Iter> void select_sort(Iter begin, Iter end) {
-  for (Iter cur = begin; cur != end; ++cur) {
-      Iter  minp = cur;
-      for (Iter p = cur; p < end; ++p) {
-          if (*p < *minp) {
-              minp = p;
-          }
-      }
-      std::swap(*minp, *cur);
-  }
+template<class Iter> 
+void select_sort(Iter begin, Iter end) {
+    for (Iter cur = begin; cur != end; ++cur) {
+        Iter  minp = cur;
+        for (Iter p = cur; p < end; ++p) {
+            if (*p < *minp) {
+                minp = p;
+            }
+        }
+        std::swap(*minp, *cur);
+    }
 }
 
-// from https://kjellkod.wordpress.com/2012/02/06/exploring-c11-part-1-time/
+// inset sort, insert sort no copy, binary insert sort and select sort
+
 class StopWatch
 {
 public:
@@ -69,11 +74,13 @@ public:
 
 private:
     clock::time_point start_;
+
 public:
     StopWatch() : start_(clock::now()){}
-    clock::time_point restart() { start_ = clock::now(); return start_;}
-    microseconds elapsedUs()    { return intervalUs(clock::now(), start_);}
-    milliseconds elapsedMs()    { return intervalMs(clock::now(), start_);}
+    clock::time_point restart() { start_ = clock::now(); return start_; }
+    microseconds elapsedUs()    { return intervalUs(clock::now(), start_); }
+    milliseconds elapsedMs()    { return intervalMs(clock::now(), start_); }
+
 private:
     microseconds intervalUs(const clock::time_point& t1, const clock::time_point& t0)
     {
@@ -86,7 +93,9 @@ private:
     }
 };
 
-struct LargeStruct {
+// define two structure to judge sort performance
+struct LargeStruct 
+{
     static const int ELEMENT_COUNT = 100;
     int v[ELEMENT_COUNT];
     LargeStruct() {
@@ -101,12 +110,14 @@ struct LargeStruct {
     }
 };
 
-std::ostream& operator<<(std::ostream& out, const LargeStruct& t) {
+std::ostream& operator<<(std::ostream& out, const LargeStruct& t) 
+{
     out << t.v[0];
     return out;
 }
 
-bool operator<(const LargeStruct& lhs, const LargeStruct& rhs) {
+bool operator<(const LargeStruct& lhs, const LargeStruct& rhs) 
+{
     return lhs.v[0] < rhs.v[0];
 }
 
@@ -132,20 +143,26 @@ struct LargeStructSlowAssign {
     }
 };
 
-std::ostream& operator<<(std::ostream& out, const LargeStructSlowAssign& t) {
+std::ostream& operator<<(std::ostream& out, const LargeStructSlowAssign& t) 
+{
     out << t.v[0];
     return out;
 }
 
-bool operator<(const LargeStructSlowAssign& lhs, const LargeStructSlowAssign& rhs) {
+bool operator<(const LargeStructSlowAssign& lhs, const LargeStructSlowAssign& rhs) 
+{
     return lhs.v[0] < rhs.v[0];
 }
 
-void dump(int ms, const char* sort_method, const char* tname, int count) {
+// print time usage
+void dump(int ms, const char* sort_method, const char* tname, int count) 
+{
     std::cout << sort_method << "\t" << tname << "\t" << ms << "\t" << count << std::endl;
 }
+
 template<class T>
-void sort_compare(const char* tname, const std::vector<int> &raw_data) {
+void sort_compare(const char* tname, const std::vector<int> &raw_data) 
+{
     StopWatch sw;
     std::vector<T> to_sort;
 
@@ -171,17 +188,24 @@ void sort_compare(const char* tname, const std::vector<int> &raw_data) {
     dump(sw.elapsedMs().count(), "std::sort", tname, to_sort.size());
 }
 
-int main() {
-#define COMPARE(x, y) sort_compare<x>(#x, y)
+int main() 
+{
+#define COMPARE(x, y) sort_compare<x>(#x, y) 
+// #把参数变成一个字符串
+
     srand(time(NULL));
-    for (int n = 10000; n <= 30000; n += 10000) {
+
+    for (int n = 10000; n <= 30000; n += 10000) 
+    {
         std::vector<int> raw_data(n);
-        for (int i = 0; i < n; ++i) {
+        for (int i = 0; i < n; ++i) 
+        {
             raw_data[i] = rand();
         }
         COMPARE(int, raw_data);
         COMPARE(LargeStruct, raw_data);
         COMPARE(LargeStructSlowAssign, raw_data);
     }
+
     return 0;
 }

@@ -4,13 +4,12 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/mnt/d/Local_Lab/LeetEveryday/sort/test.cpp" "/mnt/d/Local_Lab/LeetEveryday/sort/build/CMakeFiles/Sort.dir/test.cpp.o"
+  "/mnt/d/Users/Local_Lab/LeetEveryday/sort/test.cpp" "/mnt/d/Users/Local_Lab/LeetEveryday/sort/build/CMakeFiles/Sort.dir/test.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 
 # The include file search paths:
 set(CMAKE_CXX_TARGET_INCLUDE_PATH
-  "/usr/local/include"
   )
 
 # Targets to which this target links.

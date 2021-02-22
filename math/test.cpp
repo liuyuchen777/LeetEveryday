@@ -90,12 +90,21 @@ TEST(multiplyStr, common1)
 {
     Solution solve;
 
-    //EXPECT_EQ(solve.multiply("123", "123"), "15129");
-    //EXPECT_EQ(solve.multiply("1", "1"), "1");
-    //EXPECT_EQ(solve.multiply("123", "456"), "56088");
-    //EXPECT_EQ(solve.multiply("9", "9"), "81");
+    EXPECT_EQ(solve.multiply("123", "123"), "15129");
+    EXPECT_EQ(solve.multiply("1", "1"), "1");
+    EXPECT_EQ(solve.multiply("123", "456"), "56088");
+    EXPECT_EQ(solve.multiply("9", "9"), "81");
     EXPECT_EQ(solve.multiply("9", "99"), "891");
     EXPECT_EQ(solve.multiply("0", "99999"), "0");
+}
+
+TEST(pow, common1)
+{
+    Solution solve;
+
+    // EXPECT_EQ(solve.myPow(2.0, 10), 1024);
+    // EXPECT_EQ(solve.myPow(2.1, 3), 9.261);
+    // EXPECT_EQ(solve.myPow(2, -2), 0.25);
 }
 
 int main(int argc, char *argv[])

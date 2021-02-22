@@ -264,6 +264,44 @@ public:
         return result;
     }
 
+    double myPow(double x, int n) 
+    {
+        /*
+        // the basic myPow
+        // 小数点精度的问题
+        if (n == 0)
+            return 1;
+
+        double result = 1.0;
+        int flag = 0;
+        if (n < 0)
+            flag = -1;
+        else
+            flag = 1;
+        n = abs(n);
+        while(n--)
+        {
+            if (flag > 0)
+                result *= x;
+            else
+                result /= x;
+        }
+
+        return result;
+        */
+        if (n == 0)
+            return 1;
+        else if (n == INT32_MIN)
+            return myPow(x * x, n / 2);
+        else if (n < 0)
+        {   // 直接把负的转化为正的
+            x = 1 / x;
+            n = -n;
+        }
+        
+        return (n % 2) ? (myPow(x * x, n / 2) * x) : (myPow(x * x, n/2));
+    }
+
     void reverseStr(string& str) 
     { 
         int n = str.length(); 
