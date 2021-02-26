@@ -44,10 +44,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /mnt/d/Local_Lab/LeetEveryday/link_list
+CMAKE_SOURCE_DIR = /mnt/d/Users/Local_Lab/LeetEveryday/link_list
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /mnt/d/Local_Lab/LeetEveryday/link_list/build
+CMAKE_BINARY_DIR = /mnt/d/Users/Local_Lab/LeetEveryday/link_list/build
 
 #=============================================================================
 # Directory level rules for the build root directory
@@ -74,14 +74,14 @@ clean: CMakeFiles/LinkList.dir/clean
 CMakeFiles/LinkList.dir/all:
 	$(MAKE) -f CMakeFiles/LinkList.dir/build.make CMakeFiles/LinkList.dir/depend
 	$(MAKE) -f CMakeFiles/LinkList.dir/build.make CMakeFiles/LinkList.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/mnt/d/Local_Lab/LeetEveryday/link_list/build/CMakeFiles --progress-num=1,2 "Built target LinkList"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/mnt/d/Users/Local_Lab/LeetEveryday/link_list/build/CMakeFiles --progress-num=1,2 "Built target LinkList"
 .PHONY : CMakeFiles/LinkList.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/LinkList.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /mnt/d/Local_Lab/LeetEveryday/link_list/build/CMakeFiles 2
+	$(CMAKE_COMMAND) -E cmake_progress_start /mnt/d/Users/Local_Lab/LeetEveryday/link_list/build/CMakeFiles 2
 	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/LinkList.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /mnt/d/Local_Lab/LeetEveryday/link_list/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /mnt/d/Users/Local_Lab/LeetEveryday/link_list/build/CMakeFiles 0
 .PHONY : CMakeFiles/LinkList.dir/rule
 
 # Convenience name for target.

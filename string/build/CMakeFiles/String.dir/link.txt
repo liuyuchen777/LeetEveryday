@@ -1,0 +1,1 @@
+/usr/bin/c++   -g -std=c++11  -rdynamic CMakeFiles/String.dir/test.cpp.o  -o String  /usr/local/lib/libgtest.a /usr/local/lib/libgtest_main.a -lpthread 

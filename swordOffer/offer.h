@@ -1,8 +1,10 @@
 #include <iostream>
 #include <algorithm>
 #include <vector>
+#include <string>
 
 using namespace std;
+using Matrix = std::vector<vector<int>>;
 
 class Solution {
 public:
@@ -11,9 +13,62 @@ public:
         return a+b;
     }
 
-    bool matrixSearch(vector<vector<int>> &matrix)
+    bool matrixSearch(Matrix &matrix, int number)
     {
-        
+        /*
+         * 在每一行从左到右递增和每一列从上到下递增的数组中找出对应的元素
+         */
+        int rows = matrix.size();
+        int columns = matrix[0].size();
+
+        if (rows > 0 && columns > 0)
+        {
+            int row = 0;
+            int column = columns - 1;
+            while (row < rows && columns >= 0)
+            {
+                if (matrix[row][column] == number)
+                    return true;
+                else if (number < matrix[row][column])
+                    column--;
+                else
+                    row++;
+            }
+        }
+
+        return false;
+    }
+
+    string replaceSpace(string &str)
+    {
+        // 如果是在原有字符串基础上进行替换的话，从后往前
+        if (str.length() == 0)
+            return str;
+
+        int spaceNum = 0;
+        for (int i = 0; i < str.length(); i++)
+        {
+            if (str[i] == ' ')
+                spaceNum++;
+        }
+        string newStr((spaceNum * 2 + str.length()), ' ');
+        for (int i = 0, j = 0; i < str.length(); i++)
+        {
+            if (str[i] != ' ')
+            {
+                newStr[j] = str[i];
+                j++;
+            }
+            else
+            {
+                newStr[j] = '%';
+                newStr[j+1] = '2';
+                newStr[j+2] = '0';
+                j += 3;
+            }
+        }
+
+        return newStr;
     }
 
     void print_vec(vector<int> &vec)

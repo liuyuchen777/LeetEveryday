@@ -2,6 +2,7 @@
 #include <algorithm>
 #include <vector>
 #include <queue>
+#include <stack>
 
 using namespace std;
 
@@ -349,6 +350,35 @@ public:
         } 
 
         return result->next;
+    }
+
+    void reversePrint(ListNode *head)
+    {
+        stack<ListNode *>nodes;
+        ListNode *phead = head;
+
+        while (phead != nullptr)
+        {
+            nodes.push(phead);
+            phead = phead->next;
+        }
+        while (!nodes.empty())
+        {
+            phead = nodes.top();
+            cout << phead->val << "  ";
+            nodes.pop();
+        }
+        cout << endl;
+    }
+
+    void reversePrintRecursive(ListNode *head)
+    {
+        if (head != nullptr)
+        {
+            if (head->next != nullptr)
+                reversePrintRecursive(head->next);
+            cout << head->val << "  ";
+        }
     }
 };
 

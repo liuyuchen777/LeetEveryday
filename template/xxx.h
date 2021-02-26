@@ -5,24 +5,41 @@
 using namespace std;
 
 class Solution {
-public:
-    int add(int a, int b)
-    {
-        return a+b;
-    }
-
-    
-
-    void print_vec(vector<int> &vec)
-    {
-        vector<int>::iterator it = vec.begin();
-        for ( ; it != vec.end(); it++)
+    public:
+        int add(int a, int b)
         {
-            cout << *it << " ";
+            // test function
+            return a + b;
         }
-        cout << endl;
-    }
 };
+
+ostream& operator<<(ostream &os, vector<int> &vec)
+{
+    for (auto it = vec.begin(); it != vec.end(); it++)
+    {
+        cout << *it << "  ";
+    }
+
+    return os;
+}
+
+void print_vec_int(const vector<int> &vec)
+{
+    for (auto it = vec.begin(); it != vec.end(); it++)
+    {
+        cout << *it << "  ";
+    }
+    cout << endl;
+}
+
+template<typename type>
+void print_vec(vector<type> &vec)
+{
+    for (auto it = vec.begin(); it != vec.end(); it++)
+    {
+        cout << *it << endl;
+    }
+}
 
 bool judge_same_vector(vector<int> &vec1, vector<int> &vec2)
 {

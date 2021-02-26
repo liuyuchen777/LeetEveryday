@@ -1,0 +1,32 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/mnt/d/Users/Local_Lab/LeetEveryday/template/LinkList.h
+iostream
+-
+algorithm
+-
+vector
+-
+
+/mnt/d/Users/Local_Lab/LeetEveryday/template/test.cpp
+gtest/gtest.h
+-
+xxx.h
+/mnt/d/Users/Local_Lab/LeetEveryday/template/xxx.h
+LinkList.h
+/mnt/d/Users/Local_Lab/LeetEveryday/template/LinkList.h
+
+/mnt/d/Users/Local_Lab/LeetEveryday/template/xxx.h
+iostream
+-
+algorithm
+-
+vector
+-
+

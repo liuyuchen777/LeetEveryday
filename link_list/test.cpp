@@ -400,6 +400,35 @@ TEST(deleteSortList2, limit3)
     EXPECT_EQ(judge_same_linklist(solve.deleteDuplicates2(list), result), true);
 }
 
+TEST(reversePrint, common1)
+{
+    Solution solve;
+
+    vector<int> vec = {1, 2, 3, 4, 5};
+    ListNode *list = solve.init_linklist_vec(vec);
+    solve.reversePrint(list);
+}
+
+TEST(reversePrintRecursive, common1)
+{
+    Solution solve;
+
+    vector<int> vec = {1, 2, 3, 4, 5};
+    ListNode *list = solve.init_linklist_vec(vec);
+    solve.reversePrintRecursive(list);
+    cout << endl;
+}
+
+TEST(reversePrintRecursive, limit1)
+{
+    Solution solve;
+
+    vector<int> vec = {1};
+    ListNode *list = solve.init_linklist_vec(vec);
+    solve.reversePrintRecursive(list);
+    cout << endl;
+}
+
 int main(int argc, char *argv[])
 {
     ::testing::InitGoogleTest(&argc, argv);

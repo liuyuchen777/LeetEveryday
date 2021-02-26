@@ -1,0 +1,1 @@
+/usr/bin/c++   -g -std=c++11  -rdynamic CMakeFiles/Offer.dir/test.cpp.o  -o Offer  /usr/local/lib/libgtest.a /usr/local/lib/libgtest_main.a -lpthread 
