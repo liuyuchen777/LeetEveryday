@@ -11,6 +11,9 @@ class Solution {
             // test function
             return a + b;
         }
+
+        // func
+        
 };
 
 ostream& operator<<(ostream &os, vector<int> &vec)

@@ -8,7 +8,7 @@ find_package(Threads REQUIRED)
 
 include_directories(${GTEST_INCLUDE_DIRS})
 
-add_executable(Array array.cpp)
+add_executable(Array array.h test.cpp)
 
 target_link_libraries(Array ${GTEST_BOTH_LIBRARIES})
 target_link_libraries(Array ${CMAKE_THREAD_LIBS_INIT})

@@ -50,18 +50,56 @@ LinkList::LinkList(vector<int> &vec)
         head = nullptr;
         tail = nullptr;
     }
-
-    len = vec.size();
-    head = new ListNode(vec[0]);
-    ListNode *pointer = head;
-    
-    for (int index = 1; index < vec.size(); index++)
+    else
     {
-        pointer->next = new ListNode(vec[index]);
-        pointer = pointer->next;
-    }
+        len = vec.size();
+        head = new ListNode(vec[0]);
+        ListNode *pointer = head;
+        
+        for (int index = 1; index < vec.size(); index++)
+        {
+            pointer->next = new ListNode(vec[index]);
+            pointer = pointer->next;
+        }
 
-    tail = pointer;
+        tail = pointer;
+    }
+}
+
+int LinkList::erase()
+{
+    if (head == nullptr)
+        return -1;
+
+    ListNode *ptr = new ListNode(-1, head);
+
+    while(ptr->next->next != nullptr)
+        ptr = ptr->next;
+    ptr->next = nullptr;
+    len--;
+    tail = ptr;
+
+    return len;
+}
+
+int LinkList::erase(int pos)
+{
+    if (pos < 0 || pos > len)
+        return -1;
+    if (pos == len)
+        return erase();
+    
+    ListNode *ptr = new ListNode(-1, head);
+
+    while (pos > 1)
+    {  
+        ptr = ptr->next;
+        pos--;
+    }
+    ptr->next = ptr->next->next;
+    len--;
+
+    return len;
 }
 
 int LinkList::insert(int val)
@@ -105,12 +143,15 @@ int LinkList::insert(int pos, int val)
     // limit judege
     if (pos < 0 || pos > len)
         return -1;
+    if (pos == len)
+        return insert(val);
 
     ListNode *ptr = head;
 
-    while (pos--)
+    while (pos > 1)
     {  
         ptr = ptr->next;
+        pos--;
     }
     ListNode *newNode = new ListNode(val, ptr->next);
     ptr->next = newNode;
@@ -124,12 +165,15 @@ int LinkList::insert(int pos, ListNode *node)
     // limit judege
     if (pos < 0 || pos > len)
         return -1;
+    if (pos == len)
+        return insert(node);
     
     ListNode *ptr = head;
 
-    while (pos--)
+    while (pos > 1)
     {  
         ptr = ptr->next;
+        pos--;
     }
     node->next = ptr->next;
     ptr->next = node;
@@ -149,6 +193,10 @@ void LinkList::print()
             ptr = ptr->next;
         } while (ptr != nullptr);
         cout << endl;
+    }
+    else
+    {
+        cout << "Empty Link List!" << endl;
     }
 }
 

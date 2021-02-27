@@ -48,10 +48,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /mnt/d/Local_Lab/leetcode/array
+CMAKE_SOURCE_DIR = /mnt/d/Users/Local_Lab/LeetEveryday/array
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /mnt/d/Local_Lab/leetcode/array/build
+CMAKE_BINARY_DIR = /mnt/d/Users/Local_Lab/LeetEveryday/array/build
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -91,9 +91,9 @@ rebuild_cache/fast: rebuild_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /mnt/d/Local_Lab/leetcode/array/build/CMakeFiles /mnt/d/Local_Lab/leetcode/array/build/CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /mnt/d/Users/Local_Lab/LeetEveryday/array/build/CMakeFiles /mnt/d/Users/Local_Lab/LeetEveryday/array/build/CMakeFiles/progress.marks
 	$(MAKE) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /mnt/d/Local_Lab/leetcode/array/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /mnt/d/Users/Local_Lab/LeetEveryday/array/build/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -134,32 +134,32 @@ Array/fast:
 	$(MAKE) -f CMakeFiles/Array.dir/build.make CMakeFiles/Array.dir/build
 .PHONY : Array/fast
 
-array.o: array.cpp.o
+test.o: test.cpp.o
 
-.PHONY : array.o
+.PHONY : test.o
 
 # target to build an object file
-array.cpp.o:
-	$(MAKE) -f CMakeFiles/Array.dir/build.make CMakeFiles/Array.dir/array.cpp.o
-.PHONY : array.cpp.o
+test.cpp.o:
+	$(MAKE) -f CMakeFiles/Array.dir/build.make CMakeFiles/Array.dir/test.cpp.o
+.PHONY : test.cpp.o
 
-array.i: array.cpp.i
+test.i: test.cpp.i
 
-.PHONY : array.i
+.PHONY : test.i
 
 # target to preprocess a source file
-array.cpp.i:
-	$(MAKE) -f CMakeFiles/Array.dir/build.make CMakeFiles/Array.dir/array.cpp.i
-.PHONY : array.cpp.i
+test.cpp.i:
+	$(MAKE) -f CMakeFiles/Array.dir/build.make CMakeFiles/Array.dir/test.cpp.i
+.PHONY : test.cpp.i
 
-array.s: array.cpp.s
+test.s: test.cpp.s
 
-.PHONY : array.s
+.PHONY : test.s
 
 # target to generate assembly for a file
-array.cpp.s:
-	$(MAKE) -f CMakeFiles/Array.dir/build.make CMakeFiles/Array.dir/array.cpp.s
-.PHONY : array.cpp.s
+test.cpp.s:
+	$(MAKE) -f CMakeFiles/Array.dir/build.make CMakeFiles/Array.dir/test.cpp.s
+.PHONY : test.cpp.s
 
 # Help Target
 help:
@@ -171,9 +171,9 @@ help:
 	@echo "... test"
 	@echo "... rebuild_cache"
 	@echo "... Array"
-	@echo "... array.o"
-	@echo "... array.i"
-	@echo "... array.s"
+	@echo "... test.o"
+	@echo "... test.i"
+	@echo "... test.s"
 .PHONY : help
 
 

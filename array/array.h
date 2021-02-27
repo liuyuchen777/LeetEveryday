@@ -1,10 +1,58 @@
-#include <gtest/gtest.h>
-
 #include <iostream>
 #include <algorithm>
 #include <vector>
 
 using namespace std;
+
+void print_vec_int(vector<int> &vec)
+{
+    vector<int>::iterator it = vec.begin();
+    for ( ; it != vec.end(); it++)
+    {
+        cout << *it << " ";
+    }
+    cout << endl;
+}
+
+bool judge_same_vector(vector<int> &vec1, vector<int> &vec2)
+{
+    sort(vec1.begin(), vec1.end());
+    sort(vec2.begin(), vec2.end());
+
+    if (vec1 == vec2)
+        return true;
+    else
+        return false;
+}
+
+bool judge_same_multi_vector(vector<vector<int>> &vec1, vector<vector<int>> &vec2)
+{
+    vector<vector<int>>::iterator it1 = vec1.begin();
+    for(; it1!=vec1.end(); it1++)
+    {
+        sort((*it1).begin(), (*it1).end());
+    }
+
+    vector<vector<int>>::iterator it2 = vec2.begin();
+    for(; it2!=vec2.end(); it2++)
+    {
+        sort((*it2).begin(), (*it2).end());
+    }
+
+    it1 = vec1.begin();
+    it2 = vec2.begin();
+    while(it1 != vec1.end())
+    {
+        if (*it1 != *it2)
+        {
+            return false;
+        }
+        it1++;
+        it2++;
+    }
+
+    return true;
+}
 
 class Solution {
 public:
@@ -47,25 +95,25 @@ public:
 
         return max_val;
         */
-       
-       // two-point appraoch
-       size_t i = 0, j = height.size() - 1;
-       int max_val = 0;
+        
+        // two-point appraoch
+        size_t i = 0, j = height.size() - 1;
+        int max_val = 0;
 
-       while (i != j)
-       {
-            int temp_val = (j - i) * ((height[i] < height[j])? height[i]: height[j]);
-            if (temp_val > max_val)
-            {
-               max_val = temp_val;
-            }
-            if (height[i] < height[j])
-                i++;
-            else
-                j--;
-       }
+        while (i != j)
+        {
+                int temp_val = (j - i) * ((height[i] < height[j])? height[i]: height[j]);
+                if (temp_val > max_val)
+                {
+                max_val = temp_val;
+                }
+                if (height[i] < height[j])
+                    i++;
+                else
+                    j--;
+        }
 
-       return max_val;
+        return max_val;
     }
 
     vector<vector<int>> threeSum(vector<int>& nums) 
@@ -219,234 +267,42 @@ public:
         return res;
     }
 
-    int removeDuplicates(vector<int> &nums)
+    double findMedianSortedArrays(vector<int>& nums1, vector<int>& nums2) 
     {
-        /*
-        if (nums.size() < 2)
+        int len = nums1.size() + nums2.size();
+        vector<int> mergeArray(len);
+        int i = 0, j = 0, index = 0;
+
+        while (i < nums1.size() && j < nums2.size())
         {
-            return nums.size();
-        }
-
-        sort(nums.begin(), nums.end());
-        vector<int>::iterator it = nums.begin() + 1;
-        int prev = nums[0];
-
-
-        while(it != nums.end())
-        {
-            if (*it == prev)
-                it = nums.erase(it);
+            if (nums1[i] < nums2[j])
+            {
+                mergeArray[index] = nums1[i];
+                i++;
+            }
             else
             {
-                prev = *it;
-                it++;
+                mergeArray[index] = nums2[j];
+                j++;
             }
+            index++;
         }
-
-        return nums.size();
-        */
-
-       // solution 2
-       
-    }
-    
-    void print_vec(vector<int> &vec)
-    {
-        vector<int>::iterator it = vec.begin();
-        for ( ; it != vec.end(); it++)
+        while (i < nums1.size())
         {
-            cout << *it << " ";
+            mergeArray[index] = nums1[i];
+            i++;
+            index++;
         }
-        cout << endl;
+        while (j < nums2.size())
+        {
+            mergeArray[index] = nums2[j];
+            j++;
+            index++;
+        }
+
+        if (len % 2 == 0)
+            return (mergeArray[len / 2 - 1] + mergeArray[len / 2]) / 2.0;
+        else
+            return mergeArray[len / 2];
     }
 };
-
-bool judge_same_vector(vector<int> &vec1, vector<int> &vec2)
-{
-    sort(vec1.begin(), vec1.end());
-    sort(vec2.begin(), vec2.end());
-
-    if (vec1 == vec2)
-        return true;
-    else
-        return false;
-}
-
-bool judge_same_multi_vector(vector<vector<int>> &vec1, vector<vector<int>> &vec2)
-{
-    vector<vector<int>>::iterator it1 = vec1.begin();
-    for(; it1!=vec1.end(); it1++)
-    {
-        sort((*it1).begin(), (*it1).end());
-    }
-
-    vector<vector<int>>::iterator it2 = vec2.begin();
-    for(; it2!=vec2.end(); it2++)
-    {
-        sort((*it2).begin(), (*it2).end());
-    }
-
-    it1 = vec1.begin();
-    it2 = vec2.begin();
-    while(it1 != vec1.end())
-    {
-        if (*it1 != *it2)
-        {
-            return false;
-        }
-        it1++;
-        it2++;
-    }
-
-    return true;
-}
-
-TEST(remove, common1)
-{
-    Solution solve;
-    vector<int> array = {1, 1, 2};
-    vector<int> ans = {1, 2};
-
-    EXPECT_EQ(solve.removeDuplicates(array), 2);
-    EXPECT_EQ(judge_same_vector(array, ans), true);
-}
-
-TEST(remove, common2)
-{
-    Solution solve;
-    vector<int> array = {0, 0, 1, 1, 1, 2, 2, 3, 3, 4};
-    vector<int> ans = {0, 1, 2, 3, 4};
-
-    EXPECT_EQ(solve.removeDuplicates(array), 5);
-    EXPECT_EQ(judge_same_vector(array, ans), true);
-}
-
-TEST(threeSumClose, common1)
-{
-    Solution solve;
-    vector<int> array = {-1, 2, 1, -4};
-    int target = 1;
-    int ans = 2;
-
-    EXPECT_EQ(solve.threeSumClosest(array, target), ans);
-}
-
-TEST(JudgeMUlti, common1)
-{
-    vector<vector<int>> array1 = {{1, 2, 3}, {4, 5, 6}, {7, 8, 9}};
-    vector<vector<int>> array2 = {{1, 2, 3}, {4, 5, 6}, {7, 8, 9}};
-
-    EXPECT_EQ(judge_same_multi_vector(array1, array2), true);
-}
-
-TEST(SumupTest, basicfun1)
-{
-    Solution solve;
-
-    vector<int> arr = {3, 3};
-    int target = 6;
-    vector<int> res = solve.twoSum(arr, target);
-
-    EXPECT_EQ(res[0], 0);
-    EXPECT_EQ(res[1], 1);
-}
-
-TEST(SumupTest, basicfun2)
-{
-    Solution solve;
-
-    vector<int> arr = {2, 7, 11, 15};
-    int target = 9;
-    vector<int> res = solve.twoSum(arr, target);
-
-    EXPECT_EQ(res[0], 0);
-    EXPECT_EQ(res[1], 1);
-}
-
-TEST(SumupTest, empty1)
-{
-    Solution solve;
-
-    vector<int> arr = {};
-    int target = 9;
-    vector<int> res = solve.twoSum(arr, target);
-
-    EXPECT_EQ(res.size(), 0);
-}
-
-TEST(maxArea, common1)
-{
-    Solution solve;
-    vector<int> arr = {1, 8, 6, 2, 5, 4, 8, 3, 7};
-
-    EXPECT_EQ(solve.maxArea(arr), 49);
-}
-
-TEST(maxArea, common2)
-{
-    Solution solve;
-    vector<int> arr = {1, 1};
-
-    EXPECT_EQ(solve.maxArea(arr), 1);
-}
-
-TEST(maxArea, common3)
-{
-    Solution solve;
-    vector<int> arr = {4, 3, 2, 1, 4};
-
-    EXPECT_EQ(solve.maxArea(arr), 16);
-}
-
-TEST(maxArea, common4)
-{
-    Solution solve;
-    vector<int> arr = {1, 2, 1};
-
-    EXPECT_EQ(solve.maxArea(arr), 2);
-}
-
-TEST(maxArea, common5)
-{
-    Solution solve;
-    vector<int> arr = {2, 3, 4, 5, 18, 17, 6};
-
-    EXPECT_EQ(solve.maxArea(arr), 17);
-}
-
-
-TEST(threeSum, value1)
-{
-    Solution solve;
-    vector<int> arr = {-1,0,1,2,-1,-4};
-    vector<vector<int>> result = solve.threeSum(arr);
-    vector<vector<int>> res = {{-1, -1, 2}, {-1, 0, 1}};
-
-    vector<int> arr2 = {};
-    vector<vector<int>> result2 = solve.threeSum(arr2);
-    vector<vector<int>> res2 = {};
-    
-    EXPECT_EQ(judge_same_multi_vector(result, res), true);
-    EXPECT_EQ(judge_same_multi_vector(result2, res2), true);
-}
-
-
-TEST(JudgeFun, simple1)
-{
-    vector<int> vec1 = {-1, -1, 0};
-    vector<int> vec2 = {0, -1, -1};
-
-    EXPECT_EQ(judge_same_vector(vec1, vec2), true);
-}
-
-TEST(JudgeMulti, simple1)
-{
-    
-}
-
-int main(int argc, char *argv[])
-{
-    ::testing::InitGoogleTest(&argc, argv);
-
-    return RUN_ALL_TESTS();
-}
