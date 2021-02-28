@@ -68,17 +68,67 @@ public:
         }
         return dp[m-1][n-1];
     }
+    
+    using Matrix = std::vector<vector<int>>;
 
-    void print_vec(vector<int> &vec)
+    void rotate(vector<vector<int>>& matrix) 
     {
-        vector<int>::iterator it = vec.begin();
-        for ( ; it != vec.end(); it++)
+        vector<vector<int>> v = matrix; 
+        int k = 0;
+
+        for(int i = v.size() - 1; i >= 0; i--)
         {
-            cout << *it << " ";
+            for(int j = 0; j < v.size(); j++)
+                matrix[j][k] = v[i][j];
+            k++;
         }
-        cout << endl;
     }
+
+    void rotate2(vector<vector<int>>& matrix)
+    {
+        int n = matrix.size();
+
+        for (int i = 0; i < (n + 1) / 2; i++)
+        {
+            for (int j = 0; j < n / 2; j++)
+            {
+                int tmp = matrix[n - 1 - j][i];
+                matrix[n - 1 - j][i] = matrix[n - 1 - i][n - j - 1];
+                matrix[n - 1 -i][n - j - 1] = matrix[j][n - 1 - i];
+                matrix[j][n - i - 1] = matrix[i][j];
+                matrix[i][j] = tmp;
+            }
+        }
+    } 
 };
+
+ostream& operator<<(ostream &os, vector<int> &vec)
+{
+    for (auto it = vec.begin(); it != vec.end(); it++)
+    {
+        cout << *it << "  ";
+    }
+
+    return os;
+}
+
+void print_vec_int(const vector<int> &vec)
+{
+    for (auto it = vec.begin(); it != vec.end(); it++)
+    {
+        cout << *it << "  ";
+    }
+    cout << endl;
+}
+
+template<typename type>
+void print_vec(vector<type> &vec)
+{
+    for (auto it = vec.begin(); it != vec.end(); it++)
+    {
+        cout << *it << endl;
+    }
+}
 
 bool judge_same_vector(vector<int> &vec1, vector<int> &vec2)
 {

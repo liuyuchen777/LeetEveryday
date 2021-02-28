@@ -168,6 +168,37 @@ TEST(valid, common1)
     EXPECT_EQ(solve.isValid(s3), false);
 }
 
+TEST(gen, common1)
+{
+    Solution solve;
+
+    vector<string> result = solve.generateParenthesis(3);
+
+    print_vec(result);
+}
+
+TEST(gen2, common1)
+{
+    Solution solve;
+
+    vector<string> result = solve.generateParenthesis2(3);
+
+    print_vec(result);
+}
+
+TEST(remove, common1)
+{
+    Solution solve;
+
+    vector<int> vec1 = {3, 2, 2, 3};
+    vector<int> vec2 = {0, 1, 2, 2, 3, 0, 4, 2};
+    vector<int> vec3;
+
+    EXPECT_EQ(solve.removeElement(vec1, 3), 2);
+    EXPECT_EQ(solve.removeElement(vec2, 2), 5);
+    EXPECT_EQ(solve.removeElement(vec3, 5), 0);
+}
+
 int main(int argc, char *argv[])
 {
     ::testing::InitGoogleTest(&argc, argv);

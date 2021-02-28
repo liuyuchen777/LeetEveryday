@@ -356,6 +356,109 @@ public:
         
         return temp.size() == 0;
     }
+
+    bool isValid2(string &s) 
+    {
+        std::stack<char> temp;
+
+        for (const char i : s) 
+        {
+            if (i == '(') {
+                temp.push(i);
+                continue;
+            }
+            if (i == ')')
+                if (temp.size() == 0 || temp.top() != '(')
+                    return false;
+                else
+                    temp.pop();
+        }
+        
+        return temp.size() == 0;
+    }
+
+    vector<string> generateParenthesis(int n) 
+    {
+        vector<string> strs;
+
+        if (n == 1)
+            return {"()"};
+
+        __generateParenthesis(strs, "(", n - 1, n);
+
+        return strs;
+    }
+
+
+
+    void __generateParenthesis(vector<string> &strs, string str, int x, int y)   // x left, y right
+    {
+        if (x == 0 && y == 0 && isValid2(str))
+            strs.push_back(str);
+        if (x > 0)
+            __generateParenthesis(strs, str + "(", x - 1, y);
+        if (y > 0)
+            __generateParenthesis(strs, str + ')', x , y - 1);
+    }
+
+    vector<string> generateParenthesis2(int n) 
+    {
+        vector<string> res; 
+        
+        __generateParenthesis2(n, 0, 0, "", res);
+        
+        return res;
+    }
+    
+    void __generateParenthesis2(int n, int left, int right, string s, vector<string>& res) 
+    {
+        if (left == n && right == n) 
+            res.push_back(s);
+        
+        if (left < n) 
+            __generateParenthesis2(n, left + 1, right, s + '(', res);  
+        
+        if (right < left)       // most important
+            __generateParenthesis2(n, left, right + 1, s + ')', res);
+    }
+
+    int removeElement(vector<int>& nums, int val) 
+    {
+        return std::remove(begin(nums), end(nums), val) - begin(nums);
+    }
+
+    int strStr(string haystack, string needle) 
+    {
+        return haystack.find(needle);
+    }
+
+    int strStr2(string haystack, string needle) 
+    {
+        int n = haystack.size();
+        int m = needle.size();
+
+        if(m == 0)
+            return 0;
+        
+        int j = 0;
+        for(int i = 0; i < n; i++)
+        {
+            if(haystack[i] == needle[j])
+            {
+                j++;
+            }else
+            {
+                i = i-j;
+                j = 0;
+            }
+            if(j == m)
+            {
+                return i-j + 1;
+            }
+        }
+        
+        return -1;
+    }
 };
 
 ostream& operator<<(ostream &os, vector<int> &vec)

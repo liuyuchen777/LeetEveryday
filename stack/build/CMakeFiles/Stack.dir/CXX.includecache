@@ -1,0 +1,22 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/mnt/d/Users/Local_Lab/LeetEveryday/stack/stack.h
+iostream
+-
+algorithm
+-
+vector
+-
+
+/mnt/d/Users/Local_Lab/LeetEveryday/stack/test.cpp
+gtest/gtest.h
+-
+stack.h
+/mnt/d/Users/Local_Lab/LeetEveryday/stack/stack.h
+
