@@ -1,4 +1,0 @@
-/mnt/d/Users/Local_Lab/LeetEveryday/template/build/CMakeFiles/rebuild_cache.dir
-/mnt/d/Users/Local_Lab/LeetEveryday/template/build/CMakeFiles/edit_cache.dir
-/mnt/d/Users/Local_Lab/LeetEveryday/template/build/CMakeFiles/test.dir
-/mnt/d/Users/Local_Lab/LeetEveryday/template/build/CMakeFiles/XXX.dir

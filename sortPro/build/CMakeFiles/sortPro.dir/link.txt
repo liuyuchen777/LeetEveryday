@@ -1,1 +1,0 @@
-/usr/bin/c++   -g -std=c++11  -rdynamic CMakeFiles/sortPro.dir/test.cpp.o  -o sortPro  /usr/local/lib/libgtest.a /usr/local/lib/libgtest_main.a -lpthread 

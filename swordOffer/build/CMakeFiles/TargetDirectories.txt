@@ -1,4 +1,0 @@
-/mnt/d/Users/Local_Lab/LeetEveryday/swordOffer/build/CMakeFiles/rebuild_cache.dir
-/mnt/d/Users/Local_Lab/LeetEveryday/swordOffer/build/CMakeFiles/edit_cache.dir
-/mnt/d/Users/Local_Lab/LeetEveryday/swordOffer/build/CMakeFiles/test.dir
-/mnt/d/Users/Local_Lab/LeetEveryday/swordOffer/build/CMakeFiles/Offer.dir

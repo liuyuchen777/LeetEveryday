@@ -1,1 +1,0 @@
-/usr/bin/c++   -g -std=c++11  -rdynamic CMakeFiles/Stack.dir/test.cpp.o  -o Stack  /usr/local/lib/libgtest.a /usr/local/lib/libgtest_main.a -lpthread 
