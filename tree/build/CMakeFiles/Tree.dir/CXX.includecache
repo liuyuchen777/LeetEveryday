@@ -6,19 +6,17 @@
 
 #IncludeRegexTransform: 
 
-/mnt/d/Users/Local_Lab/LeetEveryday/stack/stack.h
+/mnt/d/Users/Local_Lab/LeetEveryday/tree/test.cpp
+gtest/gtest.h
+-
+tree.h
+/mnt/d/Users/Local_Lab/LeetEveryday/tree/tree.h
+
+/mnt/d/Users/Local_Lab/LeetEveryday/tree/tree.h
 iostream
 -
 algorithm
 -
 vector
 -
-stack
--
-
-/mnt/d/Users/Local_Lab/LeetEveryday/stack/test.cpp
-gtest/gtest.h
--
-stack.h
-/mnt/d/Users/Local_Lab/LeetEveryday/stack/stack.h
 

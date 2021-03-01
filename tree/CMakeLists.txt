@@ -10,7 +10,7 @@ include_directories(${GTEST_INCLUDE_DIRS})
 
 add_executable(Tree tree.h test.cpp)
 
-target_link_libraries(tree ${GTEST_BOTH_LIBRARIES})
-target_link_libraries(tree ${CMAKE_THREAD_LIBS_INIT})
-add_test(Test tree)
+target_link_libraries(Tree ${GTEST_BOTH_LIBRARIES})
+target_link_libraries(Tree ${CMAKE_THREAD_LIBS_INIT})
+add_test(Test Tree)
 enable_testing()
