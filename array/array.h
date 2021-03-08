@@ -1,17 +1,22 @@
 #include <iostream>
 #include <algorithm>
 #include <vector>
+#include <numeric>
 
 using namespace std;
 
-void print_vec_int(vector<int> &vec)
-{
-    vector<int>::iterator it = vec.begin();
-    for ( ; it != vec.end(); it++)
+template<typename type>
+void myReverse(type begin, type end)
+{   
+    end--;
+    while ((end - begin) > 0)
     {
-        cout << *it << " ";
+        int temp = *begin;      // how to not use int
+        *begin = *end;
+        *end = temp;
+        begin++;
+        end--;
     }
-    cout << endl;
 }
 
 bool judge_same_vector(vector<int> &vec1, vector<int> &vec2)
@@ -52,6 +57,34 @@ bool judge_same_multi_vector(vector<vector<int>> &vec1, vector<vector<int>> &vec
     }
 
     return true;
+}
+
+ostream& operator<<(ostream &os, vector<int> &vec)
+{
+    for (auto it = vec.begin(); it != vec.end(); it++)
+    {
+        cout << *it << "  ";
+    }
+
+    return os;
+}
+
+void print_vec_int(const vector<int> &vec)
+{
+    for (auto it = vec.begin(); it != vec.end(); it++)
+    {
+        cout << *it << "  ";
+    }
+    cout << endl;
+}
+
+template<typename type>
+void print_vec(vector<type> &vec)
+{
+    for (auto it = vec.begin(); it != vec.end(); it++)
+    {
+        cout << *it << endl;
+    }
 }
 
 class Solution {
@@ -304,5 +337,80 @@ public:
             return (mergeArray[len / 2 - 1] + mergeArray[len / 2]) / 2.0;
         else
             return mergeArray[len / 2];
+    }
+
+    void nextPermutation(vector<int>& nums) 
+    {
+        int n = nums.size(), i;  
+        if(n <= 1)            //base case
+            return;
+			
+        for(i = n-2; i >= 0; i--)
+        {
+            if(nums[i] >= nums[i+1])
+                continue;         //check it in descending order..{3,4,1,5,9,8,7,2} it will break at 5 
+            else
+                break;
+        }
+        if(i == -1)
+        {
+            sort(nums.begin(),nums.end());   // sort it in ascending order if array is sorted in descending order
+            return;
+		}
+        int mn=nums[i+1];
+        int mini=i+1;
+
+        for(int j=i+1;j<n;j++)
+            if(nums[j]>nums[i])
+                mn = min(mn,nums[j]), mini = j;   // calculate next greater element i.e. we get 7 as we break the loop at 5 ,...{3,4,1,5,9,8,7,2}
+				
+        swap(nums[mini], nums[i]);     // swap 5 and 7...{3,4,1,7,9,8,5,2}
+
+        sort(nums.begin() + i + 1, nums.end());    // sort the array after 7 ....{3,4,1,7,2,5,8,9}
+    }
+
+    int distributeCandies(vector<int>& candyType) 
+    {
+        int n = candyType.size() / 2;
+        sort(candyType.begin(), candyType.end());
+        candyType.erase(unique(candyType.begin(), candyType.end()), candyType.end());
+        // unique()函数将重复的元素放到vector的尾部 
+        // 然后返回指向第一个重复元素的迭代器再用erase函数擦除从这个元素到最后元素的所有的元素
+        
+        return min(n, (int)candyType.size());
+    }
+
+    vector<int> findErrorNums(vector<int>& nums) 
+    {
+        sort(nums.begin(), nums.end());
+
+        int pre = 0;
+        int missing = -1, duplicate = -1;
+        for (auto it = nums.begin(); it != nums.end(); it++)
+        {
+            if (pre == *it)
+                duplicate = *it;
+            else if (pre != (*it - 1))
+            {
+                missing = *it - 1;
+                pre = *it;
+            }
+            else
+                pre = *it;
+        }
+        if (missing == -1)
+            missing = nums.back() + 1;
+        
+
+        vector<int> res;
+        res.push_back(duplicate);
+        res.push_back(missing);
+
+        return res;
+    }
+
+    int missingNumber(vector<int>& nums) 
+    {
+        return nums.size()*(nums.size() + 1)/2 - accumulate(nums.begin(), nums.end(), 0);
     }
 };

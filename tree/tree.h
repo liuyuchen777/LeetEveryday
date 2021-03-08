@@ -1,6 +1,7 @@
 #include <iostream>
 #include <algorithm>
 #include <vector>
+#include <stack>
 
 using namespace std;
 using Matrix = std::vector<vector<int>>;
@@ -169,9 +170,14 @@ public:
         return res;
     }
 
-    vector<int> __preorderTraversal(TreeNode* root, vector<int> &res) 
+    void __preorderTraversal(TreeNode* root, vector<int> &res) 
     {
+        if (root == nullptr)
+            return;
         
+        res.push_back(root->val);
+        __preorderTraversal(root->left, res);
+        __preorderTraversal(root->right, res);
     }
 
     vector<int> preorderTraversal(TreeNode* root) 
@@ -180,6 +186,33 @@ public:
         __preorderTraversal(root, res);
         return res;
     }
+
+    void __postorderTraversal(TreeNode* root, vector<int> &res) 
+    {
+        if (root == nullptr)
+            return;
+        
+        __postorderTraversal(root->left, res);
+        __postorderTraversal(root->right, res);
+        res.push_back(root->val);
+    }
+
+    vector<int> postorderTraversal(TreeNode* root) 
+    {
+        vector<int> res;
+        __postorderTraversal(root, res);
+        return res;
+    }
+
+    vector<int> postorderTraversal2(TreeNode* root)
+    {
+        stack<TreeNode *> myStack;
+        vector<int> res;
+
+
+
+        return res;
+    } 
 
     void print_vec(vector<int> &vec)
     {

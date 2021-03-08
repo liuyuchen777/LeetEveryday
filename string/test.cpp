@@ -199,6 +199,13 @@ TEST(remove, common1)
     EXPECT_EQ(solve.removeElement(vec3, 5), 0);
 }
 
+TEST(removePalindromeSub, common1)
+{
+    Solution solve;
+
+    EXPECT_EQ(solve.removePalindromeSub("ababa"), 1);
+}
+
 int main(int argc, char *argv[])
 {
     ::testing::InitGoogleTest(&argc, argv);

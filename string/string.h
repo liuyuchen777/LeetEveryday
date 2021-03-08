@@ -93,6 +93,16 @@ public:
         return true;
     }
 
+    int removePalindromeSub(string s) 
+    {
+        if (s.size() == 0)
+            return 0;
+        if (validPalindromic(s, 0, s.size() - 1))
+            return 1;
+        
+        return 2;
+    }
+
     string longestPalindrome1(string s) 
     {
         // 暴力解法

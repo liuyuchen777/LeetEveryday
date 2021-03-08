@@ -146,6 +146,78 @@ TEST(merge, common3)
     EXPECT_EQ(solve.findMedianSortedArrays(vec1, vec2), 0.0);
 }
 
+TEST(reverse, common1)
+{
+    vector<int> vec = {1, 2, 3, 4, 5};
+    vector<int> vec2 = {1, 2, 3, 4, 5, 6};
+    Solution solve;
+
+    myReverse(vec.begin(), vec.end());
+    cout << vec << endl;
+    myReverse(vec2.begin(), vec2.end());
+    cout << vec2 << endl;
+}
+
+TEST(next, common1)
+{
+    vector<int> vec1 = {5, 4, 3, 2, 1};
+    vector<int> vec2 = {1, 2, 3};
+    vector<int> vec3 = {1, 5, 8, 4, 7, 6, 5, 3, 1};
+    vector<int> vec4 = {1, 3, 2};
+    vector<int> vec5 = {1, 2};
+    Solution solve;
+
+    solve.nextPermutation(vec1);
+    cout << vec1 << endl;
+    solve.nextPermutation(vec2);
+    cout << vec2 << endl;
+    solve.nextPermutation(vec3);
+    cout << vec3 << endl;
+    solve.nextPermutation(vec4);
+    cout << vec4 << endl;
+    solve.nextPermutation(vec5);
+    cout << vec5 << endl;
+}
+
+TEST(candy, common1)
+{
+    vector<int> vec1 = {1, 1, 2, 2, 3, 3};
+    vector<int> vec2 = {1, 1, 2, 3};
+    vector<int> vec3 = {6, 6, 6, 6};
+    Solution solve;
+
+    EXPECT_EQ(solve.distributeCandies(vec1), 3);
+    EXPECT_EQ(solve.distributeCandies(vec2), 2);
+    EXPECT_EQ(solve.distributeCandies(vec3), 1);
+}
+
+TEST(misMatch, common1)
+{
+    vector<int> vec1 = {1, 2, 2, 4};
+    vector<int> res1 = {2, 3};
+    vector<int> vec2 = {1, 2, 3, 3, 4, 6};
+    vector<int> res2 = {3, 5};
+    vector<int> vec3 = {1, 1};
+    vector<int> res3 = {1, 2};
+    vector<int> vec4 = {2, 2};
+    vector<int> res4 = {2, 1};
+    Solution solve;
+
+    EXPECT_EQ(solve.findErrorNums(vec1), res1);
+    EXPECT_EQ(solve.findErrorNums(vec2), res2);
+    EXPECT_EQ(solve.findErrorNums(vec3), res3);
+    EXPECT_EQ(solve.findErrorNums(vec4), res4);
+}
+
+TEST(miss, common1)
+{
+    Solution solve;
+
+    vector<int> vec1 = {1, 2, 3, 4};
+
+    solve.missingNumber(vec1);
+}
+
 int main(int argc, char *argv[])
 {
     ::testing::InitGoogleTest(&argc, argv);
