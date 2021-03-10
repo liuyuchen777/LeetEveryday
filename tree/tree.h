@@ -212,15 +212,83 @@ public:
 
 
         return res;
-    } 
+    }
 
-    void print_vec(vector<int> &vec)
-    {
-        vector<int>::iterator it = vec.begin();
-        for ( ; it != vec.end(); it++)
-        {
-            cout << *it << " ";
+    TreeNode* createTree(vector<int> &list, int start){
+        if (list[start] == -1) {
+            return NULL;
         }
-        cout << endl;
+
+        TreeNode* root = new TreeNode(list[start]);
+
+        int lnode = 2 * start + 1;
+        int rnode = 2 * start + 2;
+        if ( lnode > list.size() -1) {
+            root -> left = NULL;
+        }else{
+            root -> left = createTree(list, lnode);
+        }
+
+        if (rnode > list.size() -1) {
+            root -> right =NULL;
+        }else{
+            root -> right = createTree(list, rnode);
+        }
+
+        return root;
+    }
+
+    void printBT(const std::string& prefix, const TreeNode* node, bool isLeft)
+    {
+        if( node != nullptr )
+        {
+            std::cout << prefix;
+
+            std::cout << (isLeft ? "├──" : "└──" );
+
+            // print the value of the node
+            std::cout << node->val << std::endl;
+
+            // enter the next tree level - left and right branch
+            printBT( prefix + (isLeft ? "│   " : "    "), node->left, true);
+            printBT( prefix + (isLeft ? "│   " : "    "), node->right, false);
+        }
+    }
+    // get tree depth
+    int getMaxDepth(TreeNode* root) {
+        if(root == NULL)
+            return 0;
+
+        return max(getMaxDepth(root->left), getMaxDepth(root->right)) + 1;
+    }
+
+    void __addOneRow(TreeNode *node, const int v, int d)
+    {
+        if (node == nullptr)
+            return;
+        else if (d == 1)
+        {
+            node->left = new TreeNode(v, node->left, nullptr);
+            node->right = new TreeNode(v, nullptr, node->right);
+            return;
+        }
+        else
+        {
+            __addOneRow(node->left, v, d - 1);
+            __addOneRow(node->right, v, d - 1);
+        }
+    }
+
+    TreeNode* addOneRow(TreeNode* root, int v, int d) 
+    {
+        if (d == 1)
+        {
+            root = new TreeNode(v, root, nullptr);
+            return root;
+        }
+
+        __addOneRow(root, v, d - 1);
+
+        return root;
     }
 };

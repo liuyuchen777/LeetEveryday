@@ -413,4 +413,105 @@ public:
     {
         return nums.size()*(nums.size() + 1)/2 - accumulate(nums.begin(), nums.end(), 0);
     }
+
+    int search(vector<int>& nums, int target) 
+    {
+        // limit judge
+        if (nums.size() == 1)
+        {
+            if (nums[0] == target)
+                return 0;
+            else
+                return -1;
+        }
+        // step 1: find the lowest number
+        auto it = nums.begin();
+        for (; it != nums.end() - 1; it++)
+        {
+            if (*it > *(it + 1))
+                break;
+        }
+        int lowest_index = it + 1 - nums.begin();
+        int r, l;
+        // step 2: set binary search area
+        if (target >= nums[0])
+        {
+            l = 0;
+            r = lowest_index - 1;
+        }
+        else if (target < nums[0])
+        {
+            l = lowest_index;
+            r = nums.size() - 1;
+        }
+        // setp3: binary search
+        while (l <= r)
+        {
+            int m = l + (r - l) / 2;
+            if (nums[m] == target)
+                return m;
+            else if (nums[m] > target)
+                r = m - 1;
+            else
+                l = m + 1;
+        }
+
+        return -1;
+    }
+
+    vector<int> searchRange(vector<int>& nums, int target) 
+    {
+        // step 1: binary search
+        int l = 0, r = nums.size() - 1;
+        int m, flag = 0;
+        while (l <= r)
+        {
+            m = l + (r - l) / 2;
+            if (nums[m] == target)
+            {
+                flag = 1;
+                break;
+            }
+            else if (nums[m] > target)
+                r = m - 1;
+            else
+                l = m + 1;
+        }
+        // if not such element in nums
+        if (flag == 0)
+            return {-1, -1};
+        int left = m, right = m;
+        // move left and right
+        while (left != -1)
+        {
+            if (nums[left] != target)
+                break;
+            else
+                left--;
+        }
+        while (right != nums.size())
+        {
+            if (nums[right] != target)
+                break;
+            else
+                right++;
+        }
+        right--;
+        left++;
+
+        return {left, right};
+    }
+
+    int searchInsert(vector<int>& nums, int target) 
+    {
+        int i;
+        
+        for (i = 0; i < nums.size(); i++)
+        {
+            if (target < nums[i])
+                break;
+        }
+
+        return i;
+    }
 };

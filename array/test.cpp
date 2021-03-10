@@ -218,6 +218,36 @@ TEST(miss, common1)
     solve.missingNumber(vec1);
 }
 
+TEST(search, common1)
+{
+    Solution solve;
+    vector<int> vec1 = {4, 5, 6, 7, 0, 1, 2};
+    vector<int> vec2 = {1};
+
+    EXPECT_EQ(solve.search(vec1, 0), 4);
+    EXPECT_EQ(solve.search(vec1, 3), -1);
+    EXPECT_EQ(solve.search(vec2, 0), -1);
+}
+
+TEST(searchRange, common1)
+{
+    Solution solve;
+    vector<int> vec1 = {5, 7, 7, 8, 8, 10};
+    vector<int> res1 = {3, 4};
+    vector<int> res2 = {-1, -1};
+    vector<int> vec2 = {};
+    vector<int> vec3 = {2, 2};
+    vector<int> res3 = {0, 1};
+    vector<int> vec4 = {1};
+    vector<int> res4 = {0, 0};
+
+    EXPECT_EQ(solve.searchRange(vec1, 8), res1);
+    EXPECT_EQ(solve.searchRange(vec1, 6), res2);
+    EXPECT_EQ(solve.searchRange(vec2, 0), res2);
+    EXPECT_EQ(solve.searchRange(vec3, 2), res3);
+    EXPECT_EQ(solve.searchRange(vec4, 1), res4);
+}
+
 int main(int argc, char *argv[])
 {
     ::testing::InitGoogleTest(&argc, argv);
